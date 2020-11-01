@@ -10,6 +10,7 @@
   },
   "scripts": {
     "start": "node app.js",
+    "demon": "forever start -m10 --uid \"banof\" app.js",
     "localize": "node localize.js",
     "upload-translations": "node scripts/upload.js",
     "download-translations": "node scripts/download.js && yarn prettier --single-quote --no-semi --write ./helpers/localizations.js"
