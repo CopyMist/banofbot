@@ -25,7 +25,7 @@ if (config.should_use_webhooks) {
     `${config.webhook_callback_url}${config.token}`,
     path.join(config.ssl_certificate_path))
     .then(() => { console.info('Telegram webhook is active'); })
-    .catch(/** todo: handle error */);
+    .catch(() => {process.exit();});
 } else {
   bot = new Telegram(config.token, {
     polling: true,
@@ -35,6 +35,7 @@ if (config.should_use_webhooks) {
 
 bot.on('polling_error', () => {
   console.error('Polling error');
+  process.exit();
 });
 
 /** Exports */
